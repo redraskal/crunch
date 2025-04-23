@@ -11,12 +11,25 @@ datasource db {
     directUrl = env("DIRECT_DATABASE_URL")
 }
 
-// example below
-// model Post {
-//     id        Int      @id @default(autoincrement())
-//     name      String
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt
+model Restaurant {
+  id        String   @id @default(cuid())
+  name      String
+  address   String
+  osmNodeId String   // OpenStreetMap node ID
+  userId    String   // Supabase user ID
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  rating    Int?     @default(0) // 1-5 rating
+  tags      Tag[]    // Relation to tags
+  notes     String?  // Optional notes about the restaurant
+}
 
-//     @@index([name])
-// }
+model Tag {
+  id          String       @id @default(cuid())
+  name        String
+  userId      String       // Supabase user ID
+  restaurants Restaurant[] // Many-to-many relation with restaurants
+  createdAt   DateTime     @default(now())
+
+  @@unique([name, userId]) // Prevent duplicate tags per user
+}

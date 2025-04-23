@@ -1,16 +1,22 @@
-import { Button } from "~/components/ui/button";
-import { api, HydrateClient } from "~/trpc/server";
+import { Suspense } from "react";
+import { RestaurantSearch } from "~/components/restaurant-search";
+import { RecentRestaurants } from "~/components/recent-restaurants";
 
-export default async function Home() {
-  // const hello = await api.post.hello({ text: "from tRPC" });
-
-  // void api.post.getLatest.prefetch();
-
+export default async function DashboardPage() {
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <Button>Click me!</Button>
-      </main>
-    </HydrateClient>
+    <main className="container mx-auto py-8">
+      <h1 className="mb-8 text-4xl font-bold">My Restaurants</h1>
+
+      <div className="mb-8">
+        <RestaurantSearch />
+      </div>
+
+      <div>
+        <h2 className="mb-4 text-2xl font-semibold">Recently Updated</h2>
+        <Suspense fallback={<div>Loading...</div>}>
+          <RecentRestaurants />
+        </Suspense>
+      </div>
+    </main>
   );
 }
