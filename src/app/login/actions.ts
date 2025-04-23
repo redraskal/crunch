@@ -14,7 +14,7 @@ const authSchema = z.object({
 
 export async function login(formData: FormData) {
   const supabase = await createClient();
-  const data = authSchema.parse(formData);
+  const data = authSchema.parse(Object.fromEntries(formData));
 
   const { error } = await supabase.auth.signInWithPassword(data);
 
@@ -29,7 +29,7 @@ export async function login(formData: FormData) {
 
 export async function signup(formData: FormData) {
   const supabase = await createClient();
-  const data = authSchema.parse(formData);
+  const data = authSchema.parse(Object.fromEntries(formData));
 
   const { error } = await supabase.auth.signUp(data);
 
