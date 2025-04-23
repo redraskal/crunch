@@ -15,8 +15,11 @@ export default function LoginPage() {
           Crunch
         </h1>
         <p className="text-2xl">Your personal restaurant journal</p>
-        
-        <form action={isLogin ? login : signup} className="flex flex-col gap-4 w-full max-w-md">
+
+        <form
+          action={isLogin ? login : signup}
+          className="flex w-full max-w-md flex-col gap-4"
+        >
           <Input
             type="email"
             name="email"
@@ -40,7 +43,9 @@ export default function LoginPage() {
             className="text-white/80 hover:text-white"
             onClick={() => setIsLogin(!isLogin)}
           >
-            {isLogin ? "Need an account? Sign up" : "Already have an account? Login"}
+            {isLogin
+              ? "Need an account? Sign up"
+              : "Already have an account? Login"}
           </Button>
         </form>
       </div>
