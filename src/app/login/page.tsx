@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-t from-white via-[#66dbff] to-[#53c6ed] text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
           Crunch
@@ -25,14 +25,14 @@ export default function LoginPage() {
             name="email"
             placeholder="Email"
             required
-            className="bg-white/10 text-white"
+            className="bg-background text-foreground"
           />
           <Input
             type="password"
             name="password"
             placeholder="Password"
             required
-            className="bg-white/10 text-white"
+            className="bg-background text-foreground"
           />
           <Button type="submit" className="w-full">
             {isLogin ? "Login" : "Sign Up"}
@@ -40,7 +40,7 @@ export default function LoginPage() {
           <Button
             type="button"
             variant="ghost"
-            className="text-white/80 hover:text-white"
+            className="bg-background text-foreground"
             onClick={() => setIsLogin(!isLogin)}
           >
             {isLogin

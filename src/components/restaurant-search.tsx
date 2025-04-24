@@ -61,7 +61,7 @@ export function RestaurantSearch() {
     );
     const data = (await response.json()) as OverpassResponse;
     setResults(data);
-  }, 500);
+  }, 200);
 
   return (
     <div className="w-full space-y-4">
