@@ -9,6 +9,13 @@ export default async function DashboardPage() {
 
       <div className="mb-8">
         <RestaurantSearch />
+        <p className="mt-2 text-gray-700">
+          Search for a restaurant by name (filtered to St. Louis area, example:
+          Sushi Ai).
+        </p>
+        <p className="text-gray-700">
+          Search uses OpenStreetMap Overpass API, which is somewhat slow.
+        </p>
       </div>
 
       <div>
